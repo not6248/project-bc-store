@@ -1,0 +1,61 @@
+body {
+    padding-right: 0 !important;
+}
+
+.modal {
+    overflow-y: auto;
+}
+
+.modal-open {
+    overflow: auto;
+}
+
+.modal-open[style] {
+    padding-right: 0px !important;
+}
+
+html {
+    width: 100vw;
+}
+
+.table-image thead td,
+.table-image thead th {
+    border: 0;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.table-image td,
+.table-image th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-image td.qty,
+.table-image th.qty {
+    max-width: 2rem;
+}
+
+.price {
+    margin-left: 1rem;
+}
+
+.modal-footer {
+    padding-top: 0rem;
+}
+
+.hover-p {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hover-p:hover {
+    transform: scale(1.03);
+}
+
+.text-5 {
+    text-shadow: 0px 0px 5px #9B4CFF;
+    color:white;
+}
+
+
