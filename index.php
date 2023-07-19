@@ -15,7 +15,7 @@
 // ORDER BY protype_id; 
 $sql1 = "SELECT pt.*,p.product_status,COUNT(*) AS Total FROM protype_tb pt JOIN product_tb p USING(protype_id) WHERE p.product_status =0 GROUP BY protype_id";
 $query_protype = mysqli_query($conn, $sql1);
-$row1 = mysqli_fetch_assoc($query_protype);
+// $row1 = mysqli_fetch_assoc($query_protype);
 
 
 ?>
@@ -43,7 +43,7 @@ $row1 = mysqli_fetch_assoc($query_protype);
         <!-- -----ปุ่ม-------------------------------------------------------------------------------------------------- -->
         <div class="container px-4 px-lg-5">
             <a href="index.php" class="btn btn-dark">ทั้งหมด<span class="badge bg-info text-dark ms-1 rounded"></a>
-            <?php mysqli_data_seek($query_protype,0) ?>
+            <?php //mysqli_data_seek($query_protype,0) ?>
             <?php while ($row1 = mysqli_fetch_assoc($query_protype)) : ?>
                 <a  href="?protype_id=<?= $row1['protype_id'] ?>" class="btn btn-dark"><?= $row1['protype_name'] ?><span class="badge bg-info text-dark ms-1 rounded"><?= $row1['Total'] ?></span></a>
             <?php endwhile; ?>

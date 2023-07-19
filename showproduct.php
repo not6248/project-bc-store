@@ -1,9 +1,15 @@
 <?php
-$sql = "SELECT *,COUNT(*) as product_qty FROM product_tb JOIN protype_tb USING (protype_id) JOIN key_tb USING(product_id) WHERE key_status = 0 ";
+$sql = "SELECT product_tb.*, COUNT(key_tb.key_id) AS product_qty
+        FROM product_tb
+        JOIN protype_tb USING (protype_id)
+        LEFT JOIN key_tb USING (product_id)
+        WHERE (key_status = 0 OR key_tb.key_id IS NULL) AND product_status = 0 ";
 if (isset($_GET['protype_id']) && !empty($_GET['protype_id'])) {
-    $sql .= " AND protype_id = '" . $_GET['protype_id'] . "' ";}
-$sql .= "GROUP BY product_id;";
-$query_product = mysqli_query($conn,$sql);
+    $sql .= " AND protype_id = '" . $_GET['protype_id'] . "' ";
+}
+$sql .= "GROUP BY product_tb.product_id;";
+$query_product = mysqli_query($conn, $sql);
+
  ?>
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
@@ -16,7 +22,7 @@ $query_product = mysqli_query($conn,$sql);
                                 <?php if ($row['product_qty'] !== '0') : ?>
                                     <a href="item.php?product_id=<?= $row['product_id'] ?>" title="<?= $row['product_name'] ?>">
                                     <?php endif; ?>
-                                    <img class="card-img-top" src="admin/upload/product/<?= $row['product_img'] ?>" alt='...' />
+                                    <img width="270" height="180" class="card-img-top" src="admin/upload/product/<?= $row['product_img'] ?>" alt='...' />
                                     </a>
                             </div>
                             <div class="card-body p-4">
