@@ -1,6 +1,6 @@
 <!-- Content Header (Page header) -->
 <?php
-$sql = 'SELECT *,COUNT(key_status) as product_qty FROM product_tb JOIN protype_tb USING (protype_id) LEFT JOIN key_tb USING(product_id) WHERE key_status != "2" OR key_status IS NULL GROUP BY product_id;';
+$sql = 'SELECT product_id, protype_id, product_name, product_detail, product_price, product_img, product_status, product_create_datetime, protype_name, COUNT(key_status) AS product_qty FROM product_tb JOIN protype_tb USING (protype_id) LEFT JOIN key_tb USING(product_id) WHERE key_status != "2" OR key_status IS NULL GROUP BY product_id;';
 $query = mysqli_query($conn, $sql);
 ?>
 <section class="content-header">
