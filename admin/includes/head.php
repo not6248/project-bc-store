@@ -48,7 +48,7 @@
   </style>
   <!--===============================================================================================-->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <?php $sql = "SELECT protype_name,COUNT(*) AS sum FROM protype_tb JOIN product_tb USING(protype_id) GROUP BY protype_name ORDER BY protype_id";
+  <?php $sql = "SELECT protype_name,COUNT(*) AS sum FROM protype_tb JOIN product_tb USING(protype_id) GROUP BY protype_id ORDER BY protype_id;";
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {
     $rowdata[] = array($row['protype_name'], $row['sum'] + 0);
