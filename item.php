@@ -6,7 +6,20 @@
 
 
 <?php
-$sql = "SELECT *,COUNT(*) as product_qty FROM product_tb JOIN protype_tb USING (protype_id) JOIN key_tb USING(product_id) WHERE product_id = '".$_GET['product_id']."' GROUP BY product_id  ";
+$sql = "SELECT product_tb.product_id,
+product_tb.protype_id,
+product_tb.product_name,
+product_tb.product_detail,
+product_tb.product_price,
+product_tb.product_img,
+product_tb.product_status,
+product_tb.product_create_datetime,
+protype_tb.protype_name,COUNT(*) as product_qty 
+FROM product_tb 
+JOIN protype_tb USING (protype_id) 
+JOIN key_tb USING(product_id) 
+WHERE product_id = '".$_GET['product_id']."' 
+GROUP BY product_id  ";
 $query_product = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($query_product);
 ?>
